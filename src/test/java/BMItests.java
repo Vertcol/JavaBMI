@@ -2,6 +2,8 @@ import org.example.BMIberekening;
 import org.example.BMIgrens;
 import org.junit.jupiter.api.Test;
 
+import java.awt.image.BufferedImage;
+
 import static org.example.BMIberekening.berekenBMI;
 import static org.example.BMIberekening.gezondBMI;
 import static org.junit.jupiter.api.Assertions.*;
@@ -21,9 +23,33 @@ public class BMItests {
         assertFalse(gezondBMI(10, 30, "","Westen")); // Ondergewicht
         assertFalse(gezondBMI(0, 30, "","Westen")); // Ongeldige gegevens
     }
+    @Test
+    public void equivalenceTest() {
+        BMIberekening kind1 = new BMIberekening(4,24,1.20,"man",44,"Westen");
+        assertTrue(kind1.gezondBMI());
+        BMIberekening kind2 = new BMIberekening(7,28,1.20,"vrouw",44,"Westen");
+        assertFalse(kind2.gezondBMI());
+        BMIberekening kind3 = new BMIberekening(9,28,1.20,"man",44,"Westen");
+        assertFalse(kind3.gezondBMI());
+
+        BMIberekening volwassene1 = new BMIberekening(19,65,1.70,"vrouw",63,"Westen");
+        assertTrue(volwassene1.gezondBMI());
+        BMIberekening volwassene2 = new BMIberekening(43,65,1.70,"vrouw",63,"Westen");
+        assertTrue(volwassene1.gezondBMI());
+        BMIberekening volwassene3 = new BMIberekening(63,65,1.70,"vrouw",63,"Westen");
+        assertTrue(volwassene3.gezondBMI());
+
+
+        BMIberekening oudere1 = new BMIberekening(70,70,1.70,"man",140,"Westen");
+        assertTrue(oudere1.gezondBMI());
+        BMIberekening oudere2 = new BMIberekening(88,70,1.70,"man",140,"Westen");
+        assertTrue(oudere2.gezondBMI());
+        BMIberekening oudere3 = new BMIberekening(94,70,1.70,"man",140,"Westen");
+        assertTrue(oudere3.gezondBMI());
+    }
 
     @Test
-    public void gezondTest2() {
+    public void pairwiseGezondTest() {
         // Gezond BMI = 16.666666666666668
         BMIberekening berekening1 = new BMIberekening(4,24,1.20,"man",44,"Westen");
         assertTrue(berekening1.gezondBMI());
