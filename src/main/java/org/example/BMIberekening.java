@@ -29,27 +29,45 @@ public class BMIberekening {
         return gewicht / (lengte * lengte);
     }
 
-    public boolean gezondBMI(double bmi) {
-        return gezondBMI(this.berekenBMI(), this.leeftijd, this.geslacht);
+    public boolean gezondBMI() {
+        return gezondBMI(this.berekenBMI(), this.leeftijd, this.geslacht, this.afkomst);
     }
 
+    public boolean gezond() {
+        return gezondeOmtrek() && gezondBMI();
+    }
 
     // Bronnen van data:
     // https://www.voedingscentrum.nl/bmi
-    public static boolean gezondBMI(double bmi, int leeftijd, String geslacht) {
+    public static boolean gezondBMI(double bmi, int leeftijd, String geslacht, String afkomst) {
         if (leeftijd < 2 || bmi <= 0) {
             System.out.println("Ongeldige gegevens");
             return false;
         }
-        if (leeftijd <= 18) {
-            return kinderBMI(leeftijd,geslacht).gezond(bmi);
-        } else if (leeftijd <= 69) {
-            BMIgrens grens = new BMIgrens(18.5, 25.0, 30.0);
-            return grens.gezond(bmi);
-        } else {
-            BMIgrens grens = new BMIgrens(22.0, 28.0, 30.0);
-            return grens.gezond(bmi);
+
+        if (afkomst.equals("Westen")) {
+            if (leeftijd <= 18) {
+                return kinderBMI(leeftijd,geslacht).gezond(bmi);
+            } else if (leeftijd <= 69) {
+                BMIgrens grens = new BMIgrens(18.5, 25.0, 30.0);
+                return grens.gezond(bmi);
+            } else {
+                BMIgrens grens = new BMIgrens(22.0, 28.0, 30.0);
+                return grens.gezond(bmi);
+            }
+        } else if (afkomst.equals("Aziatisch")) {
+            if (leeftijd <= 18) {
+                return kinderBMI(leeftijd,geslacht).gezond(bmi);
+            } else if (leeftijd <= 69) {
+                BMIgrens grens = new BMIgrens(18.5, 23.0, 27.5);
+                return grens.gezond(bmi);
+            } else {
+                BMIgrens grens = new BMIgrens(22.0, 28.0, 30.0);
+                return grens.gezond(bmi);
+            }
         }
+        return false;
+
     }
 
     public boolean gezondeOmtrek() {

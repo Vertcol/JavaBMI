@@ -14,11 +14,12 @@ public class Main {
 
         System.out.println("Voer uw leeftijd in: ");
         int leeftijd = Integer.valueOf(scanner.nextLine());
-        String geslacht = null;
-
 
         System.out.println("Voer uw geslacht in (man/vrouw): ");
-        geslacht = scanner.nextLine();
+        String geslacht = scanner.nextLine();
+
+        System.out.println("Voer uw afkomst in (Westen/Aziatisch): ");
+        String afkomst = scanner.nextLine();
 
         System.out.println("Voer uw middelomtrek (cm): ");
         int middelomtrek = Integer.valueOf(scanner.nextLine());
@@ -29,10 +30,12 @@ public class Main {
         System.out.println("Voer uw gewicht in (Kg): ");
         double gewicht = Double.valueOf(scanner.nextLine());
 
-        double bmi = BMIberekening.berekenBMI(gewicht, lengte);
+        BMIberekening berekening = new BMIberekening(leeftijd,gewicht,lengte,geslacht,middelomtrek,afkomst);
+
+        double bmi = berekening.berekenBMI();
         System.out.println("Uw BMI is gelijk aan " + bmi);
 
-        boolean gezonde_bmi = gezondBMI(bmi,leeftijd,geslacht);
+        boolean gezonde_bmi = berekening.gezondBMI();
         if (gezonde_bmi) {
             System.out.println("Dit is voor uw leeftijd een gezonde BMI");
         } else {
