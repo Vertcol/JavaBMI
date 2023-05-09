@@ -9,7 +9,16 @@ public class BMIberekening {
     private double lengte;
     private String geslacht;
     private int middelomtrek;
-    private boolean aziatischeAfkomst;
+    private String afkomst;
+
+    public BMIberekening(int leeftijd, double gewicht, double lengte, String geslacht, int middelomtrek, String afkomst) {
+        this.leeftijd = leeftijd;
+        this.gewicht = gewicht;
+        this.lengte = lengte;
+        this.geslacht = geslacht;
+        this.middelomtrek = middelomtrek;
+        this.afkomst = afkomst;
+    }
 
     public double berekenBMI() {
         return berekenBMI(this.gewicht,this.lengte);
