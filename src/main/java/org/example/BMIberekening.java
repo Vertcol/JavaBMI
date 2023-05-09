@@ -1,12 +1,29 @@
 package org.example;
 
+import java.sql.SQLOutput;
 import java.util.HashMap;
 
 public class BMIberekening {
+    private int leeftijd;
+    private double gewicht;
+    private double lengte;
+    private String geslacht;
+    private int middelomtrek;
+    private boolean aziatischeAfkomst;
+
+    public double berekenBMI() {
+        return berekenBMI(this.gewicht,this.lengte);
+    }
+
     public static double berekenBMI(double gewicht, double lengte) {
         if (gewicht <= 0 || lengte <= 0) { return 0.0; }
         return gewicht / (lengte * lengte);
     }
+
+    public boolean gezondBMI(double bmi) {
+        return gezondBMI(this.berekenBMI(), this.leeftijd, this.geslacht);
+    }
+
 
     // Bronnen van data:
     // https://www.voedingscentrum.nl/bmi
@@ -24,6 +41,34 @@ public class BMIberekening {
             BMIgrens grens = new BMIgrens(22.0, 28.0, 30.0);
             return grens.gezond(bmi);
         }
+    }
+
+    public boolean gezondeOmtrek() {
+        return gezondeOmtrek(this.middelomtrek,this.geslacht);
+    }
+
+    public static boolean gezondeOmtrek(int middelomtrek, String geslacht) {
+
+        if (geslacht.equals("man")) {
+            if (middelomtrek < 94) {
+                return true;
+            } else if (middelomtrek < 102) {
+                return true;
+            } else {
+                return false;
+            }
+        } else if (geslacht.equals("vrouw")) {
+            if (middelomtrek < 80) {
+                return true;
+            } else if (middelomtrek < 88) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        System.out.println("ERROR: ongeldige gegevens");
+
+        return false;
     }
 
 

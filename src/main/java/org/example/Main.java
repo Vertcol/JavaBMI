@@ -16,10 +16,12 @@ public class Main {
         int leeftijd = Integer.valueOf(scanner.nextLine());
         String geslacht = null;
 
-        if (leeftijd <= 18) {
-            System.out.println("Voer uw geslacht in (man/vrouw): ");
-            geslacht = scanner.nextLine();
-        }
+
+        System.out.println("Voer uw geslacht in (man/vrouw): ");
+        geslacht = scanner.nextLine();
+
+        System.out.println("Voer uw middelomtrek (cm): ");
+        int middelomtrek = Integer.valueOf(scanner.nextLine());
 
         System.out.println("Voer uw lengte in (m): ");
         double lengte = Double.valueOf(scanner.nextLine());
