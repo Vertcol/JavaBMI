@@ -32,7 +32,7 @@ public class BMIberekening {
     // https://venturing-mag.blogspot.com/2022/06/body-mass-index-voor-kinderen.html
     // De BMI is bij kinderen gedetaileerder en afhankelijk van het geslacht
     public static BMIgrens kinderBMI(int leeftijd, String geslacht) {
-        if (geslacht.equals("jongen")) {
+        if (geslacht.equals("man")) {
             HashMap<Integer,BMIgrens> grenzen = new HashMap<Integer, BMIgrens>();
             grenzen.put(2, new BMIgrens(14.95,18.41,20.09));
             grenzen.put(3, new BMIgrens(14.54,17.89,19.57));
@@ -53,7 +53,7 @@ public class BMIberekening {
             grenzen.put(18, new BMIgrens(18.50,25.00,30.00));
 
             return grenzen.get(leeftijd);
-        } else if (geslacht.equals("meisje")) {
+        } else if (geslacht.equals("vrouw")) {
             HashMap<Integer,BMIgrens> grenzen = new HashMap<Integer, BMIgrens>();
             grenzen.put(2, new BMIgrens(14.74,18.02,19.81));
             grenzen.put(3, new BMIgrens(14.38,17.56,19.36));
