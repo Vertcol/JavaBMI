@@ -38,7 +38,7 @@ public class BMItests {
         BMIberekening volwassene1 = new BMIberekening(19,65,1.70,"vrouw",63,"Westen");
         assertTrue(volwassene1.gezondBMI());
         BMIberekening volwassene2 = new BMIberekening(43,65,1.70,"vrouw",63,"Westen");
-        assertTrue(volwassene1.gezondBMI());
+        assertTrue(volwassene2.gezondBMI());
         BMIberekening volwassene3 = new BMIberekening(69,65,1.70,"vrouw",63,"Westen");
         assertTrue(volwassene3.gezondBMI());
 
