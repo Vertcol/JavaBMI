@@ -25,6 +25,9 @@ public class BMItests {
     }
     @Test
     public void equivalenceTest() {
+        BMIberekening ongeldig = new BMIberekening(0,24,1.20,"man",44,"Westen");
+        assertFalse(ongeldig.gezondBMI());
+
         BMIberekening kind1 = new BMIberekening(4,24,1.20,"man",44,"Westen");
         assertTrue(kind1.gezondBMI());
         BMIberekening kind2 = new BMIberekening(7,28,1.20,"vrouw",44,"Westen");
@@ -36,7 +39,7 @@ public class BMItests {
         assertTrue(volwassene1.gezondBMI());
         BMIberekening volwassene2 = new BMIberekening(43,65,1.70,"vrouw",63,"Westen");
         assertTrue(volwassene1.gezondBMI());
-        BMIberekening volwassene3 = new BMIberekening(63,65,1.70,"vrouw",63,"Westen");
+        BMIberekening volwassene3 = new BMIberekening(69,65,1.70,"vrouw",63,"Westen");
         assertTrue(volwassene3.gezondBMI());
 
 
